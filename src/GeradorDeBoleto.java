@@ -2,22 +2,22 @@ import java.util.Calendar;
 
 public class GeradorDeBoleto {
     private BoletoBuilder boletoBuilder;
+    String sacado;
+    String cedente;
+    double valor;
+    Calendar vencimento;
 
-    public GeradorDeBoleto(BoletoBuilder boletoBuilder) {
+    public GeradorDeBoleto(BoletoBuilder boletoBuilder, String sacado, String cedente, double Valor, Calendar Vencimento) {
         this.boletoBuilder = boletoBuilder;
+        this.sacado = sacado;
+        this.cedente = cedente;
+        this.valor = Valor;
+        this.vencimento = Vencimento;
     }
     public Boleto geraBoleto() {
-        String sacado = "Marcelo Martins";
         this.boletoBuilder.buildSacado(sacado);
-
-        String cedente = "K19 Treinamentos";
         this.boletoBuilder.buildCedente(cedente);
-
-        double valor = 100.54;
         this.boletoBuilder.buildValor(valor);
-
-        Calendar vencimento = Calendar.getInstance();
-        vencimento.set(2025, Calendar.MAY, 31);
         this.boletoBuilder.buildVencimento(vencimento);
 
         int nossoNumero = 15412;

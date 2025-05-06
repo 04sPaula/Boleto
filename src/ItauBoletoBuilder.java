@@ -7,15 +7,6 @@ public class ItauBoletoBuilder implements BoletoBuilder{
     private Calendar vencimento;
     private int nossoNumero;
 
-    public ItauBoletoBuilder(String sacado, String cedente, double valor, Calendar vencimento,
-                           int nossoNumero) {
-        this.sacado = sacado;
-        this.cedente = cedente;
-        this.valor = valor;
-        this.vencimento = vencimento;
-        this.nossoNumero = nossoNumero;
-    }
-
     @Override
     public void buildSacado(String sacado) {
 
@@ -53,6 +44,6 @@ public class ItauBoletoBuilder implements BoletoBuilder{
 
     @Override
     public Boleto getBoleto() {
-        return null;
+        return new ItauBoleto(sacado, cedente, valor, vencimento, nossoNumero);
     }
 }
