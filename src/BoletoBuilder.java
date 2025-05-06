@@ -5,7 +5,7 @@ public interface BoletoBuilder {
     void buildCedente(String cedente);
     void buildValor(double valor);
     void buildVencimento(Calendar vencimento);
-    void buildNossoNumero(int nossoNumero);
+    void buildNossoNumero();
     void buildCodigoDeBarras();
     void buildLogotipo();
 

@@ -8,8 +8,7 @@ public class BBBoleto implements Boleto {
     private Calendar vencimento;
     private int nossoNumero;
 
-    public BBBoleto(String sacado, String cedente, double valor, Calendar vencimento,
-                           int nossoNumero) {
+    public BBBoleto(String sacado, String cedente, double valor, Calendar vencimento, int nossoNumero) {
         this.sacado = sacado;
         this.cedente = cedente;
         this.valor = valor;

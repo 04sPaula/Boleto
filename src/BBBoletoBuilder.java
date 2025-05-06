@@ -28,8 +28,8 @@ public class BBBoletoBuilder implements BoletoBuilder {
     }
 
     @Override
-    public void buildNossoNumero(int nossoNumero) {
-        this.nossoNumero = nossoNumero;
+    public void buildNossoNumero() {
+        this.nossoNumero = 001;
     }
 
     @Override

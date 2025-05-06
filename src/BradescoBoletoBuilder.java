@@ -9,27 +9,27 @@ public class BradescoBoletoBuilder implements BoletoBuilder {
 
     @Override
     public void buildSacado(String sacado) {
-
+        this.sacado = sacado;
     }
 
     @Override
     public void buildCedente(String cedente) {
-
+        this.cedente = cedente;
     }
 
     @Override
     public void buildValor(double valor) {
-
+        this.valor = valor;
     }
 
     @Override
     public void buildVencimento(Calendar vencimento) {
-
+        this.vencimento = vencimento;
     }
 
     @Override
-    public void buildNossoNumero(int nossoNumero) {
-
+    public void buildNossoNumero() {
+        nossoNumero = 237;
     }
 
     @Override

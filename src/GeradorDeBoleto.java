@@ -1,7 +1,7 @@
 import java.util.Calendar;
 
 public class GeradorDeBoleto {
-    private BoletoBuilder boletoBuilder;
+    private final BoletoBuilder boletoBuilder;
     String sacado;
     String cedente;
     double valor;
@@ -19,9 +19,7 @@ public class GeradorDeBoleto {
         this.boletoBuilder.buildCedente(cedente);
         this.boletoBuilder.buildValor(valor);
         this.boletoBuilder.buildVencimento(vencimento);
-
-        int nossoNumero = 15412;
-        this.boletoBuilder.buildNossoNumero(nossoNumero);
+        this.boletoBuilder.buildNossoNumero();
 
         this.boletoBuilder.buildCodigoDeBarras();
         this.boletoBuilder.buildLogotipo();
