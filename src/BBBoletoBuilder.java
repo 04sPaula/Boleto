@@ -2,19 +2,23 @@ import java.util.Calendar;
 
 public class BBBoletoBuilder implements BoletoBuilder {
     private String sacado;
+    private String sacadoCad;
     private String cedente;
+    private String cedenteCad;
     private double valor;
     private Calendar vencimento;
     private int nossoNumero;
 
     @Override
-    public void buildSacado(String sacado) {
+    public void buildSacado(String sacado, String sacadoCad) {
         this.sacado = sacado;
+        this.sacadoCad = sacadoCad;
     }
 
     @Override
-    public void buildCedente(String cedente) {
+    public void buildCedente(String cedente, String cedenteCad) {
         this.cedente = cedente;
+        this.cedenteCad = cedenteCad;
     }
 
     @Override
