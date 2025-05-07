@@ -1,8 +1,8 @@
 import java.util.Calendar;
 
 public interface BoletoBuilder {
-    void buildSacado(String sacado);
-    void buildCedente(String cedente);
+    void buildSacado(String sacado, String sacadoCad);
+    void buildCedente(String cedente, String cedenteCad);
     void buildValor(double valor);
     void buildVencimento(Calendar vencimento);
     void buildNossoNumero();
