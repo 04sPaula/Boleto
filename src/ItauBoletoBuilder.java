@@ -10,13 +10,15 @@ public class ItauBoletoBuilder implements BoletoBuilder{
     private int nossoNumero;
 
     @Override
-    public void buildSacado(String sacado) {
+    public void buildSacado(String sacado, String sacadoCad) {
         this.sacado = sacado;
+        this.sacadoCad = sacadoCad;
     }
 
     @Override
-    public void buildCedente(String cedente) {
+    public void buildCedente(String cedente, String cedenteCad) {
         this.cedente = cedente;
+        this.cedenteCad = cedenteCad;
     }
 
     @Override
