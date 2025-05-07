@@ -3,15 +3,19 @@ import java.util.Calendar;
 
 public class ItauBoleto implements Boleto {
     private String sacado;
+    private String sacadoCad;
     private String cedente;
+    private String cedenteCad;
     private double valor;
     private Calendar vencimento;
     private int nossoNumero;
 
-    public ItauBoleto(String sacado, String cedente, double valor, Calendar vencimento,
+    public BradescoBoleto(String sacado, String sacadoCad, String cedente, String cedenteCad, double valor, Calendar vencimento,
                     int nossoNumero) {
         this.sacado = sacado;
+        this.sacadoCad = sacadoCad;
         this.cedente = cedente;
+        this.cedenteCad = cedenteCad;
         this.valor = valor;
         this.vencimento = vencimento;
         this.nossoNumero = nossoNumero;
@@ -23,8 +27,18 @@ public class ItauBoleto implements Boleto {
     }
 
     @Override
+    public String getSacadoCad() {
+        return this.sacadoCad;
+    }
+
+    @Override
     public String getCedente() {
         return this.cedente;
+    }
+
+    @Override
+    public String getCedenteCad() {
+        return this.cedenteCad;
     }
 
     @Override
