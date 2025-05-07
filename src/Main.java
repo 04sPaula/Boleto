@@ -8,8 +8,14 @@ public class Main {
         System.out.print("Nome do Sacado: ");
         String sacado = scanner.nextLine();
 
+        System.out.print("CPF/CNPJ do Sacado: ");
+        String sacadoCad = scanner.nextLine();
+
         System.out.print("Nome do Cedente: ");
         String cedente = scanner.nextLine();
+
+        System.out.print("CPF/CNPJ do Cedente: ");
+        String cedenteCad = scanner.nextLine();
 
         System.out.print("Valor do boleto (ex: 150.75): ");
         String valorTexto = scanner.nextLine().replace(",", ".");
@@ -28,7 +34,7 @@ public class Main {
         vencimento.set(ano, mes, dia);
 
         BoletoBuilder boletoBuilder = new BBBoletoBuilder();
-        GeradorDeBoleto gerador = new GeradorDeBoleto(boletoBuilder, sacado, cedente, valor, vencimento);
+        GeradorDeBoleto gerador = new GeradorDeBoleto(boletoBuilder, sacado, sacadoCad, cedente, cedenteCad, valor, vencimento);
         Boleto boleto = gerador.geraBoleto();
 
         System.out.println(boleto);
