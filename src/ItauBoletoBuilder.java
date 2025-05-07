@@ -2,7 +2,9 @@ import java.util.Calendar;
 
 public class ItauBoletoBuilder implements BoletoBuilder{
     private String sacado;
+    private String sacadoCad;
     private String cedente;
+    private String cedenteCad;
     private double valor;
     private Calendar vencimento;
     private int nossoNumero;
