@@ -10,7 +10,7 @@ public class ItauBoleto implements Boleto {
     private Calendar vencimento;
     private int nossoNumero;
 
-    public BradescoBoleto(String sacado, String sacadoCad, String cedente, String cedenteCad, double valor, Calendar vencimento,
+    public ItauBoleto(String sacado, String sacadoCad, String cedente, String cedenteCad, double valor, Calendar vencimento,
                     int nossoNumero) {
         this.sacado = sacado;
         this.sacadoCad = sacadoCad;
