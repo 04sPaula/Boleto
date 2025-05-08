@@ -9,6 +9,10 @@ public class BBBoleto implements Boleto {
     private double valor;
     private Calendar vencimento;
     private int nossoNumero;
+    private int agencia;
+    private int conta;
+    private int carteira;
+    private String codigoDeBarras;
 
     public BBBoleto(String sacado, String sacadoCad, String cedente, String cedenteCad, double valor, Calendar vencimento,
                     int nossoNumero) {
@@ -55,6 +59,13 @@ public class BBBoleto implements Boleto {
     public int getNossoNumero() {
         return this.nossoNumero;
     }
+
+    @Override
+    public String getCodigoDeBarras() {
+        String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("001", nossoNumero, vencimento, valor) + nossoNumero + agencia + conta + carteira;
+        GeradordeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
+        return "./imagens/CodigoDeBarrasCompleto.png";
+    };
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
