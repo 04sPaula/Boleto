@@ -61,6 +61,21 @@ public class BBBoleto implements Boleto {
     }
 
     @Override
+    public int getAgencia() {
+        return this.agencia;
+    }
+
+    @Override
+    public int getConta() {
+        return this.conta;
+    }
+
+    @Override
+    public int getCarteira() {
+        return this.carteira;
+    }
+
+    @Override
     public String getCodigoDeBarras() {
         String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("001", vencimento, valor) + nossoNumero + agencia + conta + carteira;
         GeradordeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
