@@ -8,6 +8,7 @@ public interface Boleto {
     double getValor();
     Calendar getVencimento();
     int getNossoNumero();
+    String getCodigoDeBarras();
     String toString();
 
 }
