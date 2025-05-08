@@ -30,16 +30,14 @@ public class GeradorDeCodDeBarras {
         }
     }
 
-    public static String gerarCodigoBase(String banco, String nossoNumero, Calendar vencimento, double valor) {
+    public static String gerarCodigoBase(String banco, Calendar vencimento, double valor) {
         String moeda = "9"; // Real
         int fatorVencimento = (int) ((vencimento.getTimeInMillis() - getDataBase().getTimeInMillis()) / (1000 * 60 * 60 * 24));
 
         DecimalFormat valorFormatado = new DecimalFormat("0000000000");
         String valorBoleto = valorFormatado.format((int) (valor * 100)); // valor em centavos
 
-        String nossoNumeroFormatado = String.format("%011d", Long.parseLong(nossoNumero));
-
-        String campoCompleto = banco + moeda + fatorVencimento + valorBoleto + nossoNumeroFormatado;
+        String campoCompleto = banco + moeda + fatorVencimento + valorBoleto;
 
         String numeroIdentificacao = "0";
 
