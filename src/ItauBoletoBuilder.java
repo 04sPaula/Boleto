@@ -48,6 +48,6 @@ public class ItauBoletoBuilder implements BoletoBuilder{
 
     @Override
     public Boleto getBoleto() {
-        return new ItauBoleto(sacado, cedente, valor, vencimento, nossoNumero);
+        return new ItauBoleto(sacado, sacadoCad, cedente, cedenteCad, valor, vencimento, nossoNumero);
     }
 }

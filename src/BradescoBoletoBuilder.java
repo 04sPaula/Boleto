@@ -18,7 +18,7 @@ public class BradescoBoletoBuilder implements BoletoBuilder {
     @Override
     public void buildCedente(String cedente, String cedenteCad) {
         this.cedente = cedente;
-        this.cedente = cedenteSac;
+        this.cedenteCad = cedenteCad;
     }
 
     @Override
@@ -48,6 +48,6 @@ public class BradescoBoletoBuilder implements BoletoBuilder {
 
     @Override
     public Boleto getBoleto() {
-        return new BradescoBoleto(sacado, cedente, valor, vencimento, nossoNumero);
+        return new BradescoBoleto(sacado, sacadoCad, cedente, cedenteCad, valor, vencimento, nossoNumero);
     }
 }

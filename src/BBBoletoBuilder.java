@@ -48,6 +48,6 @@ public class BBBoletoBuilder implements BoletoBuilder {
 
     @Override
     public Boleto getBoleto() {
-        return new BBBoleto(sacado, cedente, valor, vencimento, nossoNumero);
+        return new BBBoleto(sacado, sacadoCad, cedente, cedenteCad, valor, vencimento, nossoNumero);
     }
 }

@@ -60,7 +60,9 @@ public class BBBoleto implements Boleto {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Boleto BB" + "\n");
         stringBuilder.append("Sacado: " + this.sacado + "\n");
+        stringBuilder.append("CPF/CNPJ do sacado: " + this.sacadoCad + "\n");
         stringBuilder.append("Cedente: " + this.cedente + "\n");
+        stringBuilder.append("CPF/CNPJ do cedente: " + this.cedenteCad + "\n");
         stringBuilder.append("Valor: " + this.valor + "\n");
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
