@@ -8,9 +8,9 @@ public interface Boleto {
     double getValor();
     Calendar getVencimento();
     int getNossoNumero();
-    int getAgencia;
-    int getConta;
-    int getCarteira;
+    int getAgencia();
+    int getConta();
+    int getCarteira();
     String getCodigoDeBarras();
     String toString();
 
