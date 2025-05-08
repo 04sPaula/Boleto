@@ -21,8 +21,7 @@ public class Main {
         String valorTexto = scanner.nextLine().replace(",", ".");
         double valor = Double.parseDouble(valorTexto);
 
-
-        System.out.print("Informe ano, mês e dia de vencimento, um por vez!");
+        System.out.println("Informe ano, mês e dia de vencimento, um por vez!");
         System.out.print("Ano de vencimento (ex. 2025): ");
         int ano = scanner.nextInt();
         System.out.print("Mês de vencimento (ex. 5): ");

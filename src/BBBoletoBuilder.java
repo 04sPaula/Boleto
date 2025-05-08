@@ -1,4 +1,5 @@
 import java.util.Calendar;
+import java.text.DecimalFormat;
 
 public class BBBoletoBuilder implements BoletoBuilder {
     private String sacado;
