@@ -9,6 +9,10 @@ public class ItauBoleto implements Boleto {
     private double valor;
     private Calendar vencimento;
     private int nossoNumero;
+    private int agencia;
+    private int conta;
+    private int carteira;
+    private String codigoDeBarras;
 
     public ItauBoleto(String sacado, String sacadoCad, String cedente, String cedenteCad, double valor, Calendar vencimento,
                     int nossoNumero) {
@@ -56,6 +60,21 @@ public class ItauBoleto implements Boleto {
         return this.nossoNumero;
     }
 
+    @Override
+    public int getAgencia() {
+        return this.agencia;
+    }
+
+    @Override
+    public int getConta() {
+        return this.conta;
+    }
+
+    @Override
+    public int getCarteira() {
+        return this.carteira;
+    }
+    
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Boleto BB" + "\n");
