@@ -77,7 +77,7 @@ public class ItauBoleto implements Boleto {
 
     @Override
     public String getCodigoDeBarras() {
-        String numero = carteira + nossoNumero;
+        String numero = String.valueOf(carteira) + nossoNumero;
 
         int soma = 0;
         int multiplicador = 2;

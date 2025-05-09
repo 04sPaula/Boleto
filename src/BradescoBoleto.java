@@ -77,14 +77,14 @@ public class BradescoBoleto implements Boleto {
     
     @Override
     public String getCodigoDeBarras() {
-        String numero = agencia + carteira + nossoNumero + conta;
+        String numero = String.valueOf(agencia) + carteira + nossoNumero + conta;
 
         int[] pesos = {2, 3, 4, 5, 6, 7};
         int pesoIndex = 0;
         int soma = 0;
 
-        for (int i = campo.length() - 1; i >= 0; i--) {
-            int digito = Character.getNumericValue(campo.charAt(i));
+        for (int i = numero.length() - 1; i >= 0; i--) {
+            int digito = Character.getNumericValue(numero.charAt(i));
             int peso = pesos[pesoIndex];
             
             soma += digito * peso;
