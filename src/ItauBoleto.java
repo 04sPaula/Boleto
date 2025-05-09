@@ -74,6 +74,34 @@ public class ItauBoleto implements Boleto {
     public int getCarteira() {
         return this.carteira;
     }
+
+    @Override
+    public String getCodigoDeBarras() {
+        String numero = carteira + nossoNumero;
+
+        int soma = 0;
+        int multiplicador = 2;
+
+        for (int i = numero.length() - 1; i >= 0; i--) {
+            int digito = Character.getNumericValue(numero.charAt(i));
+            int produto = digito * multiplicador;
+
+            if (produto > 9) {
+                produto = (produto / 10) + (produto % 10);
+            }
+
+            soma += produto;
+
+            multiplicador = (multiplicador == 2) ? 1 : 2;
+        }
+
+        int resto = soma % 10;
+        int dac = (resto == 0) ? 0 : (10 - resto);
+        
+        String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("001", vencimento, valor) + carteira + nossoNumero + agencia + conta + dac + "000" ;
+        GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
+        return "./imagens/CodigoDeBarrasCompleto.png";
+    };
     
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
