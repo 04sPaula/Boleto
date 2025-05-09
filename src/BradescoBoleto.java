@@ -15,7 +15,7 @@ public class BradescoBoleto implements Boleto {
     private String codigoDeBarras;
 
     public BradescoBoleto(String sacado, String sacadoCad, String cedente, String cedenteCad, double valor, Calendar vencimento,
-                    int nossoNumero) {
+                    int nossoNumero, int agencia, int conta, int carteira) {
         this.sacado = sacado;
         this.sacadoCad = sacadoCad;
         this.cedente = cedente;
@@ -23,6 +23,9 @@ public class BradescoBoleto implements Boleto {
         this.valor = valor;
         this.vencimento = vencimento;
         this.nossoNumero = nossoNumero;
+        this.agencia = agencia;
+        this.conta = conta;
+        this.carteira = carteira;
     }
 
     @Override

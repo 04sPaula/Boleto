@@ -1,5 +1,4 @@
 import java.util.Calendar;
-import java.text.DecimalFormat;
 
 public class BBBoletoBuilder implements BoletoBuilder {
     private String sacado;
@@ -9,6 +8,10 @@ public class BBBoletoBuilder implements BoletoBuilder {
     private double valor;
     private Calendar vencimento;
     private int nossoNumero;
+    private int agencia;
+    private int conta;
+    private int carteira;
+
 
     @Override
     public void buildSacado(String sacado, String sacadoCad) {
@@ -48,7 +51,23 @@ public class BBBoletoBuilder implements BoletoBuilder {
     }
 
     @Override
+    public void buildAgencia(int agencia) {
+        this.agencia = agencia;
+    }
+
+    @Override
+    public void buildConta(int conta) {
+        this.conta = conta;
+    }
+
+    @Override
+    public void buildCarteira(int carteira) {
+        this.carteira = carteira;
+    }
+
+    @Override
     public Boleto getBoleto() {
-        return new BBBoleto(sacado, sacadoCad, cedente, cedenteCad, valor, vencimento, nossoNumero);
+        return new BBBoleto(sacado, sacadoCad, cedente, cedenteCad, valor, vencimento, nossoNumero,
+                agencia, conta, carteira);
     }
 }

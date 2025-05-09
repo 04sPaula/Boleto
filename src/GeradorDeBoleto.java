@@ -8,15 +8,22 @@ public class GeradorDeBoleto {
     String cedenteCad;
     double valor;
     Calendar vencimento;
+    int agencia;
+    int carteira;
+    int conta;
 
-    public GeradorDeBoleto(BoletoBuilder boletoBuilder, String sacado, String sacadoCad, String cedente, String cedenteCad, double Valor, Calendar Vencimento) {
+    public GeradorDeBoleto(BoletoBuilder boletoBuilder, String sacado, String sacadoCad, String cedente,
+                           String cedenteCad, double valor, Calendar vencimento, int agencia, int carteira, int conta) {
         this.boletoBuilder = boletoBuilder;
         this.sacado = sacado;
         this.sacadoCad = sacadoCad;
         this.cedente = cedente;
         this.cedenteCad = cedenteCad;
-        this.valor = Valor;
-        this.vencimento = Vencimento;
+        this.valor = valor;
+        this.vencimento = vencimento;
+        this.agencia = agencia;
+        this.carteira = carteira;
+        this.conta = conta;
     }
     public Boleto geraBoleto() {
         this.boletoBuilder.buildSacado(sacado, sacadoCad);

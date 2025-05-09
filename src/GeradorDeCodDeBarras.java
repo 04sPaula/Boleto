@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.Calendar;
 
 public class GeradorDeCodDeBarras {
@@ -21,6 +20,8 @@ public class GeradorDeCodDeBarras {
 
             BufferedImage imagem = new BufferedImage(barcode.getWidth(), barcode.getHeight(), BufferedImage.TYPE_INT_ARGB);
             barcode.draw((Graphics2D) imagem.getGraphics(), 0, 0);
+
+            new File(caminho).getParentFile().mkdirs();
 
             ImageIO.write(imagem, "png", new File(caminho));
         } catch (OutputException | IOException e) {
@@ -39,9 +40,7 @@ public class GeradorDeCodDeBarras {
 
         String campoSemDV = banco + moeda + fatorVencimento + valorFormatado;
 
-        String numeroIdentificacao = "0";
-
-        return banco + moeda + calcularDigitoVerificador(campoSemDV + numeroIdentificacao)
+        return banco + moeda + calcularDigitoVerificador(campoSemDV)
                 + String.format("%04d", fatorVencimento) + valorFormatado;
     }
 

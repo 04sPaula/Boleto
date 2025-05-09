@@ -17,11 +17,11 @@ public class Main {
         System.out.print("CPF/CNPJ do Cedente: ");
         String cedenteCad = scanner.nextLine();
 
-        System.out.print("Valor do boleto (ex: 150.75): ");
+        System.out.print("Valor do boleto em reais (ex: 150.75): ");
         String valorTexto = scanner.nextLine().replace(",", ".");
         double valor = Double.parseDouble(valorTexto);
 
-        System.out.println("Informe ano, mês e dia de vencimento, um por vez!");
+        System.out.println("Informe ano, mês e dia de vencimento, um por vez! \n");
         System.out.print("Ano de vencimento (ex. 2025): ");
         int ano = scanner.nextInt();
         System.out.print("Mês de vencimento (ex. 5): ");
@@ -29,11 +29,21 @@ public class Main {
         System.out.print("Dia de vencimento (ex. 31): ");
         int dia = scanner.nextInt();
 
+        System.out.print("Conta: ");
+        int conta = scanner.nextInt();
+
+        System.out.print("Agência: ");
+        int agencia = scanner.nextInt();
+
+        System.out.print("Carteira: ");
+        int carteira = scanner.nextInt();
+
         Calendar vencimento = Calendar.getInstance();
         vencimento.set(ano, mes, dia);
 
         BoletoBuilder boletoBuilder = new BBBoletoBuilder();
-        GeradorDeBoleto gerador = new GeradorDeBoleto(boletoBuilder, sacado, sacadoCad, cedente, cedenteCad, valor, vencimento);
+        GeradorDeBoleto gerador = new GeradorDeBoleto(boletoBuilder, sacado, sacadoCad, cedente, cedenteCad, valor,
+                vencimento, agencia, carteira, conta);
         Boleto boleto = gerador.geraBoleto();
 
         System.out.println(boleto);

@@ -15,7 +15,7 @@ public class BBBoleto implements Boleto {
     private String codigoDeBarras;
 
     public BBBoleto(String sacado, String sacadoCad, String cedente, String cedenteCad, double valor, Calendar vencimento,
-                    int nossoNumero) {
+                    int nossoNumero, int agencia, int conta, int carteira) {
         this.sacado = sacado;
         this.sacadoCad = sacadoCad;
         this.cedente = cedente;
@@ -23,6 +23,10 @@ public class BBBoleto implements Boleto {
         this.valor = valor;
         this.vencimento = vencimento;
         this.nossoNumero = nossoNumero;
+        this.agencia = agencia;
+        this.conta = conta;
+        this.carteira = carteira;
+        this.codigoDeBarras = getCodigoDeBarras();
     }
 
     @Override
@@ -92,6 +96,7 @@ public class BBBoleto implements Boleto {
         stringBuilder.append("CPF/CNPJ do sacado: " + this.sacadoCad + "\n");
         stringBuilder.append("Cedente: " + this.cedente + "\n");
         stringBuilder.append("CPF/CNPJ do cedente: " + this.cedenteCad + "\n");
+        stringBuilder.append("Caminho do código de barras: " + this.getCodigoDeBarras() + "\n");
         stringBuilder.append("Valor: " + this.valor + "\n");
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

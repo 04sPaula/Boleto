@@ -9,5 +9,11 @@ public interface BoletoBuilder {
     void buildCodigoDeBarras();
     void buildLogotipo();
 
+    void buildAgencia(int agencia);
+
+    void buildConta(int conta);
+
+    void buildCarteira(int carteira);
+
     Boleto getBoleto();
 }
