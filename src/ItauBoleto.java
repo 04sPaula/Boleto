@@ -97,8 +97,11 @@ public class ItauBoleto implements Boleto {
 
         int resto = soma % 10;
         int dac = (resto == 0) ? 0 : (10 - resto);
+
+        String campoLivre = String.format("%03d", carteira) + String.format("%08d", nossoNumero) +
+                        String.format("%04d", agencia) + String.format("%05d", conta) + dac + "0000";
         
-        String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("001", vencimento, valor) + carteira + nossoNumero + agencia + conta + dac + "000" ;
+        String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("341", vencimento, valor) + campoLivre ;
         GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
         return "./imagens/CodigoDeBarrasCompleto.png";
     };

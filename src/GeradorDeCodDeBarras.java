@@ -34,15 +34,15 @@ public class GeradorDeCodDeBarras {
         String moeda = "9"; // Real
         int fatorVencimento = (int) ((vencimento.getTimeInMillis() - getDataBase().getTimeInMillis()) / (1000 * 60 * 60 * 24));
 
-        DecimalFormat valorFormatado = new DecimalFormat("0000000000");
-        String valorBoleto = valorFormatado.format((int) (valor * 100)); // valor em centavos
+        long valorCentavos = Math.round(valor * 100);
+        String valorFormatado = String.format("%010d", valorCentavos); // valor em centavos
 
-        String campoCompleto = banco + moeda + fatorVencimento + valorBoleto;
+        String campoSemDV = banco + moeda + fatorVencimento + valorFormatado;
 
         String numeroIdentificacao = "0";
 
-        return banco + moeda + calcularDigitoVerificador(campoCompleto + numeroIdentificacao)
-                + fatorVencimento + valor;
+        return banco + moeda + calcularDigitoVerificador(campoSemDV + numeroIdentificacao)
+                + String.format("%04d", fatorVencimento) + valorFormatado;
     }
 
     private static Calendar getDataBase() {

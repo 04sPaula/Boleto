@@ -100,8 +100,11 @@ public class BradescoBoleto implements Boleto {
         } else {
             dac = 11 - resto;
         }
+
+        String campoLivre = String.format("%04d", agencia) + String.format("%02d", carteira) +
+                        String.format("%011d", nossoNumero) + dac + String.format("%07d", conta);
         
-        String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("001", vencimento, valor) + agencia + carteira + nossoNumero + dac + conta ;
+        String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("237", vencimento, valor) + campoLivre ;
         GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
         return "./imagens/CodigoDeBarrasCompleto.png";
     };
