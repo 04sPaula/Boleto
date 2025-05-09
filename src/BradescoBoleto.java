@@ -74,6 +74,37 @@ public class BradescoBoleto implements Boleto {
     public int getCarteira() {
         return this.carteira;
     }
+    
+    @Override
+    public String getCodigoDeBarras() {
+        String numero = agencia + carteira + nossoNumero + conta;
+
+        int[] pesos = {2, 3, 4, 5, 6, 7};
+        int pesoIndex = 0;
+        int soma = 0;
+
+        for (int i = campo.length() - 1; i >= 0; i--) {
+            int digito = Character.getNumericValue(campo.charAt(i));
+            int peso = pesos[pesoIndex];
+            
+            soma += digito * peso;
+
+            pesoIndex = (pesoIndex + 1) % pesos.length;
+        }
+
+        int resto = soma % 11;
+        int dac;
+
+        if (resto == 0 || resto == 1) {
+            dac = 0;
+        } else {
+            dac = 11 - resto;
+        }
+        
+        String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("001", vencimento, valor) + agencia + carteira + nossoNumero + dac + conta ;
+        GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
+        return "./imagens/CodigoDeBarrasCompleto.png";
+    };
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
