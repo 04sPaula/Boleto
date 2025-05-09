@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Calendar;
 
 public class GeradorDeCodDeBarras {
-    public static void gerarImagem(String codigo, String caminho) {
+    public static String gerarImagem(String codigo, String caminho) {
         try {
             Barcode barcode = BarcodeFactory.createInt2of5(codigo, true);
             barcode.setBarWidth(2);
@@ -23,9 +23,14 @@ public class GeradorDeCodDeBarras {
 
             new File(caminho).getParentFile().mkdirs();
 
-            ImageIO.write(imagem, "png", new File(caminho));
+            String timestamp = String.valueOf(System.currentTimeMillis());
+            String novoCaminho = caminho.replace(".png", "_" + timestamp + ".png");
+            ImageIO.write(imagem, "png", new File(novoCaminho));
+
+            return novoCaminho;
         } catch (OutputException | IOException e) {
             e.printStackTrace();
+            return null;
         } catch (BarcodeException e) {
             throw new RuntimeException(e);
         }

@@ -85,8 +85,8 @@ public class BBBoleto implements Boleto {
                         String.format("%08d", conta) + String.format("%03d", carteira);
 
         String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("001", vencimento, valor) + campoLivre;
-        GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
-        return "./imagens/CodigoDeBarrasCompleto.png";
+        String caminhoFinal = GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
+        return caminhoFinal;
     };
 
     public String toString() {
@@ -96,7 +96,7 @@ public class BBBoleto implements Boleto {
         stringBuilder.append("CPF/CNPJ do sacado: " + this.sacadoCad + "\n");
         stringBuilder.append("Cedente: " + this.cedente + "\n");
         stringBuilder.append("CPF/CNPJ do cedente: " + this.cedenteCad + "\n");
-        stringBuilder.append("Caminho do código de barras: " + this.getCodigoDeBarras() + "\n");
+        stringBuilder.append("Caminho do código de barras: " + codigoDeBarras + "\n");
         stringBuilder.append("Valor: " + this.valor + "\n");
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
