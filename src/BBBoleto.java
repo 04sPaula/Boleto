@@ -82,19 +82,26 @@ public class BBBoleto implements Boleto {
     @Override
     public String getCodigoDeBarras() {
         String codigoEscrito = getCodigoDeBarrasDigitavel();
-        String caminhoFinal = GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
-        return caminhoFinal;
+        return GeradorDeCodDeBarras.gerarImagem(codigoEscrito,
+                "../imagens/CodigoDeBarrasCompleto.png");
     };
 
+    @Override
     public String getCodigoDeBarrasDigitavel() {
         String campoLivre = String.format("%08d", nossoNumero) + String.format("%04d", agencia) +
                 String.format("%08d", conta) + String.format("%03d", carteira);
 
-        return GeradorDeCodDeBarras.gerarCodigoBase("001", vencimento, valor) + campoLivre;
+        String codigoDigitavel = GeradorDeCodDeBarras.gerarCodigoBase("001", vencimento, valor) + campoLivre;
+        if (codigoDigitavel.length() % 2 == 0) {
+            return codigoDigitavel;
+        } else {
+            return "0" + codigoDigitavel;
+        }
     }
 
+    @Override
     public String getLogotipo() {
-        return "./imagens/logotipos/BB.png";
+        return "imagens/logotipos/BB.png";
     }
 
     public String toString() {

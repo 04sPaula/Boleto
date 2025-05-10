@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,9 +18,11 @@ import java.util.Locale;
 public class GeradorDePdfUtil {
     public static void gerarPdf(Boleto boleto, String caminhoPdf) throws Exception {
         new File("./boletos/").mkdirs();
+        Path path = Paths.get(caminhoPdf);
+        Files.createDirectories(path.getParent());
 
         Document doc = new Document(PageSize.A4);
-        PdfWriter.getInstance(doc, Files.newOutputStream(Paths.get(caminhoPdf)));
+        PdfWriter.getInstance(doc, Files.newOutputStream(path));
         doc.open();
 
         // Logo e título
@@ -110,10 +113,13 @@ public class GeradorDePdfUtil {
 
         // Código de barras
         BufferedImage barcodeImg = ImageIO.read(new File(boleto.getCodigoDeBarras()));
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(barcodeImg, "png", baos);
-        Image codigoImg = Image.getInstance(baos.toByteArray());
-        codigoImg.scalePercent(80);
+        Image codigoImg;
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            ImageIO.write(barcodeImg, "png", baos);
+            baos.flush();
+            codigoImg = Image.getInstance(baos.toByteArray());
+        }
+        codigoImg.scalePercent(60);
         codigoImg.setAlignment(Image.ALIGN_CENTER);
         doc.add(codigoImg);
 

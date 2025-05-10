@@ -81,9 +81,8 @@ public class ItauBoleto implements Boleto {
 
     @Override
     public String getCodigoDeBarras() {
-        String caminhoFinal = GeradorDeCodDeBarras.gerarImagem(getCodigoDeBarrasDigitavel(),
-                "./imagens/CodigoDeBarrasCompleto.png");
-        return caminhoFinal;
+        return GeradorDeCodDeBarras.gerarImagem(getCodigoDeBarrasDigitavel(),
+                "../imagens/CodigoDeBarrasCompleto.png");
     };
 
     public String getCodigoDeBarrasDigitavel() {
@@ -115,7 +114,7 @@ public class ItauBoleto implements Boleto {
     }
 
     public String getLogotipo() {
-        return "./imagens/logotipos/ITAU.png";
+        return "imagens/logotipos/ITAU.png";
     }
 
 

@@ -35,14 +35,12 @@ public class Main {
         System.out.print("Nome do Sacado: ");
         String sacado = scanner.nextLine();
 
-        System.out.print("CPF/CNPJ do Sacado: ");
-        String sacadoCad = scanner.nextLine();
+        String sacadoCad = LeitorUtil.lerCampoComTamanho(scanner, "CPF/CNPJ do Sacado: ", 14);
 
         System.out.print("Nome do Cedente: ");
         String cedente = scanner.nextLine();
 
-        System.out.print("CPF/CNPJ do Cedente: ");
-        String cedenteCad = scanner.nextLine();
+        String cedenteCad = LeitorUtil.lerCampoComTamanho(scanner, "CPF/CNPJ do Cedente: ", 14);
 
         System.out.print("Valor do boleto em reais (ex: 150.75): ");
         String valorTexto = scanner.nextLine().replace(",", ".");
@@ -55,21 +53,19 @@ public class Main {
         int mes = scanner.nextInt() - 1;
         System.out.print("Dia de vencimento (ex. 31): ");
         int dia = scanner.nextInt();
+        scanner.nextLine(); // consumir quebra de linha pendente
 
-        System.out.print("Conta: ");
-        int conta = scanner.nextInt();
-
-        System.out.print("Agência: ");
-        int agencia = scanner.nextInt();
-
-        System.out.print("Carteira: ");
-        int carteira = scanner.nextInt();
+        int conta = LeitorUtil.lerInteiroComTamanho(scanner, "Conta (até 10 dígitos): ", 10);
+        int agencia = LeitorUtil.lerInteiroComTamanho(scanner, "Agência (até 4 dígitos): ", 4);
+        int carteira = LeitorUtil.lerInteiroComTamanho(scanner, "Carteira (até 3 dígitos): ", 3);
 
         Calendar vencimento = Calendar.getInstance();
         vencimento.set(ano, mes, dia);
-        
-        GeradorDeBoleto gerador = new GeradorDeBoleto(boletoBuilder, sacado, sacadoCad, cedente, cedenteCad, valor,
-                vencimento, agencia, carteira, conta);
+
+        GeradorDeBoleto gerador = new GeradorDeBoleto(
+                boletoBuilder, sacado, sacadoCad, cedente, cedenteCad, valor,
+                vencimento, agencia, carteira, conta
+        );
         Boleto boleto = gerador.geraBoleto();
 
         try {

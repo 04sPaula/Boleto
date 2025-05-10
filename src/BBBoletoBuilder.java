@@ -12,7 +12,6 @@ public class BBBoletoBuilder implements BoletoBuilder {
     private int conta;
     private int carteira;
 
-
     @Override
     public void buildSacado(String sacado, String sacadoCad) {
         this.sacado = sacado;

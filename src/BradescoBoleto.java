@@ -81,14 +81,12 @@ public class BradescoBoleto implements Boleto {
     
     @Override
     public String getCodigoDeBarras() {
-
-        GeradorDeCodDeBarras.gerarImagem(getCodigoDeBarrasDigitavel(),
-                "./imagens/CodigoDeBarrasCompleto.png");
-        return "./imagens/CodigoDeBarrasCompleto.png";
+        return GeradorDeCodDeBarras.gerarImagem(getCodigoDeBarrasDigitavel(),
+                "../imagens/CodigoDeBarrasCompleto.png");
     };
 
     public String getLogotipo() {
-        return "./imagens/logotipos/BRADESCO.png";
+        return "imagens/logotipos/BRADESCO.png";
     }
 
     @Override

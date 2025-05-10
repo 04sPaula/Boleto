@@ -13,7 +13,16 @@ import java.util.Calendar;
 public class GeradorDeCodDeBarras {
     public static String gerarImagem(String codigo, String caminho) {
         try {
-            Barcode barcode = BarcodeFactory.createInt2of5(codigo, true);
+            codigo = codigo.replaceAll("\\D", "");
+
+            if (codigo.length() % 2 != 0) {
+                codigo = "0" + codigo;
+            }
+            if (codigo.length() % 2 != 0) {
+                throw new RuntimeException("Erro: O código gerado não possui número par de caracteres.");
+            }
+
+            Barcode barcode = BarcodeFactory.createInt2of5(codigo, false);
             barcode.setBarWidth(2);
             barcode.setBarHeight(60);
             barcode.setDrawingText(false);
