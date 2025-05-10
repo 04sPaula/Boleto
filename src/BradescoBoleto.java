@@ -81,6 +81,18 @@ public class BradescoBoleto implements Boleto {
     
     @Override
     public String getCodigoDeBarras() {
+
+        GeradorDeCodDeBarras.gerarImagem(getCodigoDeBarrasDigitavel(),
+                "./imagens/CodigoDeBarrasCompleto.png");
+        return "./imagens/CodigoDeBarrasCompleto.png";
+    };
+
+    public String getLogotipo() {
+        return "./imagens/logotipos/BRADESCO.png";
+    }
+
+    @Override
+    public String getCodigoDeBarrasDigitavel() {
         String numero = String.valueOf(agencia) + carteira + nossoNumero + conta;
 
         int[] pesos = {2, 3, 4, 5, 6, 7};
@@ -90,7 +102,7 @@ public class BradescoBoleto implements Boleto {
         for (int i = numero.length() - 1; i >= 0; i--) {
             int digito = Character.getNumericValue(numero.charAt(i));
             int peso = pesos[pesoIndex];
-            
+
             soma += digito * peso;
 
             pesoIndex = (pesoIndex + 1) % pesos.length;
@@ -106,12 +118,10 @@ public class BradescoBoleto implements Boleto {
         }
 
         String campoLivre = String.format("%04d", agencia) + String.format("%02d", carteira) +
-                        String.format("%011d", nossoNumero) + dac + String.format("%07d", conta);
-        
-        String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("237", vencimento, valor) + campoLivre ;
-        GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
-        return "./imagens/CodigoDeBarrasCompleto.png";
-    };
+                String.format("%011d", nossoNumero) + dac + String.format("%07d", conta);
+
+        return GeradorDeCodDeBarras.gerarCodigoBase("237", vencimento, valor) + campoLivre;
+    }
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

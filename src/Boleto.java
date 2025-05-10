@@ -13,5 +13,6 @@ public interface Boleto {
     int getCarteira();
     String getCodigoDeBarras();
     String toString();
-
+    String getLogotipo();
+    String getCodigoDeBarrasDigitavel();
 }

@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Informe uma das opções a seguir:\n 1 para Banco do Brasil\nDigite 2 para Itau\nDigite 3 para Bradesco ");
+        System.out.print("Informe uma das opções a seguir:\n 1 para Banco do Brasil\n 2 para Itau\n 3 para Bradesco ");
         int banco = scanner.nextInt();
         scanner.nextLine();
 

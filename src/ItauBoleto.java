@@ -81,6 +81,12 @@ public class ItauBoleto implements Boleto {
 
     @Override
     public String getCodigoDeBarras() {
+        String caminhoFinal = GeradorDeCodDeBarras.gerarImagem(getCodigoDeBarrasDigitavel(),
+                "./imagens/CodigoDeBarrasCompleto.png");
+        return caminhoFinal;
+    };
+
+    public String getCodigoDeBarrasDigitavel() {
         String numero = String.valueOf(carteira) + nossoNumero;
 
         int soma = 0;
@@ -103,13 +109,16 @@ public class ItauBoleto implements Boleto {
         int dac = (resto == 0) ? 0 : (10 - resto);
 
         String campoLivre = String.format("%03d", carteira) + String.format("%08d", nossoNumero) +
-                        String.format("%04d", agencia) + String.format("%05d", conta) + dac + "0000";
-        
-        String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("341", vencimento, valor) + campoLivre ;
-        String caminhoFinal = GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
-        return caminhoFinal;
-    };
-    
+                String.format("%04d", agencia) + String.format("%05d", conta) + dac + "0000";
+
+        return GeradorDeCodDeBarras.gerarCodigoBase("341", vencimento, valor) + campoLivre;
+    }
+
+    public String getLogotipo() {
+        return "./imagens/logotipos/ITAU.png";
+    }
+
+
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Boleto BB" + "\n");
