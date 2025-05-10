@@ -26,6 +26,7 @@ public class ItauBoleto implements Boleto {
         this.agencia = agencia;
         this.conta = conta;
         this.carteira = carteira;
+        this.codigoDeBarras = getCodigoDeBarras();
     }
 
     @Override
@@ -105,8 +106,8 @@ public class ItauBoleto implements Boleto {
                         String.format("%04d", agencia) + String.format("%05d", conta) + dac + "0000";
         
         String codigoEscrito = GeradorDeCodDeBarras.gerarCodigoBase("341", vencimento, valor) + campoLivre ;
-        GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
-        return "./imagens/CodigoDeBarrasCompleto.png";
+        String caminhoFinal = GeradorDeCodDeBarras.gerarImagem(codigoEscrito, "./imagens/CodigoDeBarrasCompleto.png");
+        return caminhoFinal;
     };
     
     public String toString() {

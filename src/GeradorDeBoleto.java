@@ -31,6 +31,9 @@ public class GeradorDeBoleto {
         this.boletoBuilder.buildValor(valor);
         this.boletoBuilder.buildVencimento(vencimento);
         this.boletoBuilder.buildNossoNumero();
+        this.boletoBuilder.buildAgencia(agencia);
+        this.boletoBuilder.buildCarteira(carteira);
+        this.boletoBuilder.buildConta(conta);
 
         this.boletoBuilder.buildCodigoDeBarras();
         this.boletoBuilder.buildLogotipo();

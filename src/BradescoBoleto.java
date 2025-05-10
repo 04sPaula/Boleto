@@ -26,6 +26,7 @@ public class BradescoBoleto implements Boleto {
         this.agencia = agencia;
         this.conta = conta;
         this.carteira = carteira;
+        this.codigoDeBarras = getCodigoDeBarras();
     }
 
     @Override
